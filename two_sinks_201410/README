@@ -1,0 +1,23 @@
+2014-12-17  (CR Notebook V1,p50) 
+
+Goal: 
+-----
+Create a SWU-limited simulation of an LEU and HEU sink, to see what the DRE does.
+
+filename        SWUCap  simID	description
+-------------------------------------------------------------------------------
+two_leu		1000	49c00e	Two LEU, diff. inventory, not limited.
+leu_heu		1000	12fad4	1LEU,1HEU, diff. invent., not limited.
+leu_eq_heu	288	b9750b	1LEU,1HEU, exact SWU required for invent.
+leu_or_heu	226	9495b2	1LEU,1HEU, exact SWU for HEU, DRE must choose
+leu_limit	100	cb0726	1LEU,2HEU, SWU enough only for LEU
+
+Note:
+-----
+SWU limits were not precisely calculated (used 4.5% in calculation, 4% in simulation), so SWUCap is not quite correct in the case where 'exact SWU' is assumed. Actual exact SWU required for 1kg HEU=192.9,  and 10kg LEU=52.7.  
+
+
+Result:
+-------
+DRE correctly provides both facilities the requested capacities when SWU is not limited.  When SWU is limited, HEU is matched first, with remainder of SWU capacity assigned to LEU facility.  If there is insufficient SWU for either request, the HEU is given all available SWU and no LEU is made.
+
